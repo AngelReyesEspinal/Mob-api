@@ -1,0 +1,12 @@
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp2.2\Models.deps.json
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp2.2\Models.runtimeconfig.json
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp2.2\Models.runtimeconfig.dev.json
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp2.2\Models.dll
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp2.2\Models.pdb
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.AssemblyInfoInputs.cache
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.AssemblyInfo.cs
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.csproj.CoreCompileInputs.cache
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.dll
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.pdb
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.genruntimeconfig.cache
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.csprojAssemblyReference.cache

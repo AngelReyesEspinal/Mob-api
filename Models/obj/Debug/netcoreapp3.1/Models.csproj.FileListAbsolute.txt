@@ -1,0 +1,11 @@
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp3.1\Models.deps.json
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp3.1\Models.dll
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfoInputs.cache
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp3.1\Models.AssemblyInfo.cs
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp3.1\Models.runtimeconfig.json
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp3.1\Models.runtimeconfig.dev.json
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp3.1\Models.genruntimeconfig.cache
+D:\Source\Repos\Mob\Api\Models\bin\Debug\netcoreapp3.1\Models.pdb
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp3.1\Models.csproj.CoreCompileInputs.cache
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp3.1\Models.dll
+D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp3.1\Models.pdb
