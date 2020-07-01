@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using BL.Dtos;
+using BL.Mappings.Extensions;
 using BL.Services.BaseRepository;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -17,21 +20,37 @@ namespace Api.Controllers
     {
         private IHostingEnvironment _env;
         private readonly IBaseRepository<Document> _documentRepository;
-        public SubjectController(IBaseRepository<Subject> baseRepository, IBaseRepository<Document> documentRepository, IHostingEnvironment env)
+        private readonly IMapper _mapper;
+
+        public SubjectController(IBaseRepository<Subject> baseRepository, IBaseRepository<Document> documentRepository, IHostingEnvironment env, IMapper mapper)
             : base(baseRepository)
         {
             _env = env;
+            _mapper = mapper;
             _documentRepository = documentRepository;
         }
 
         [HttpGet("userId/{id}")]
         public async Task<IActionResult> GetByUserId(int id)
         {
-            var subject = await _baseRepository.GetContext().Subject.Include(x => x.Document).FirstOrDefaultAsync(x => x.UserId == id);
-            var imagePath = subject.Document.Path + subject.Document.FileName;
-            var img = await ConvertToBase64(imagePath);
-            var base64 = "data:image/png;base64," + img;
-            return Ok(base64);
+            var dtos = new List<SubjectDto>();
+            var subjects = await _baseRepository.GetContext()
+                                               .Subject.Include(x => x.Document)
+                                               .Where(x => x.UserId == id)
+                                               .ToListAsync();
+            foreach (var subject in subjects) // hay que buscarle la vuelta con el mapper idk
+            {
+                var dto = new SubjectDto
+                {
+                    Id = subject.Id,
+                    UserId = subject.UserId,
+                    Name = subject.Name,
+                    Logo = await ConvertToBase64(subject.Document.Path + subject.Document.FileName),
+                    SecretKey = subject.SecretKey
+                };
+                dtos.Add(dto);
+            }
+            return Ok(dtos);
         }
 
         [HttpPost("upload")]
@@ -86,10 +105,11 @@ namespace Api.Controllers
             }
         }
 
-        private async Task<string> ConvertToBase64(string path) {
+        private async Task<string> ConvertToBase64(string path)
+        {
             Byte[] byteArray = System.IO.File.ReadAllBytes(path).ToArray();
             string base64String = Convert.ToBase64String(byteArray);
-            return base64String;
+            return "data:image/png;base64," + base64String;
         }
 
     }
