@@ -6,7 +6,7 @@ D:\Source\Repos\Mob\Api\BL\bin\Debug\netcoreapp2.2\Models.pdb
 D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.csprojAssemblyReference.cache
 D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.AssemblyInfoInputs.cache
 D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.AssemblyInfo.cs
+D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.csproj.CoreCompileInputs.cache
 D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.csproj.CopyComplete
 D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.dll
 D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.pdb
-D:\Source\Repos\Mob\Api\BL\obj\Debug\netcoreapp2.2\BL.csproj.CoreCompileInputs.cache

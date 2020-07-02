@@ -16,6 +16,7 @@ using Models.Entities;
 
 namespace Api.Controllers
 {
+    // todo: refactorizar
     public class SubjectController : BaseController<Subject>
     {
         private IHostingEnvironment _env;
@@ -28,6 +29,24 @@ namespace Api.Controllers
             _env = env;
             _mapper = mapper;
             _documentRepository = documentRepository;
+        }
+
+        [HttpGet("GetById/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var subject = await _baseRepository.GetContext()
+                                               .Subject.Include(x => x.Document)
+                                               .FirstOrDefaultAsync(x => x.Id == id);
+            var dto = new SubjectDto
+            {
+                Id = subject.Id,
+                UserId = subject.UserId,
+                Name = subject.Name,
+                FileName = subject.Document.OriginalName,
+                Logo = await ConvertToBase64(subject.Document.Path + subject.Document.FileName),
+                SecretKey = subject.SecretKey
+            };
+            return Ok(dto);
         }
 
         [HttpGet("userId/{id}")]
@@ -53,7 +72,7 @@ namespace Api.Controllers
             return Ok(dtos);
         }
 
-        [HttpPost("upload")]
+        [HttpPost("subject")]
         public async Task<IActionResult> Upload([FromForm] string name, IFormFile file)
         {
             if (file == null)
@@ -95,6 +114,53 @@ namespace Api.Controllers
             {
                 throw;
             }
+        }
+
+        [HttpPost("updateSubject")]
+        public async Task<IActionResult> UploadUpdate([FromForm] string id, [FromForm] string name, IFormFile file)
+        {
+            var subjectId = Convert.ToInt32(id);
+            var subject = _baseRepository.GetById(subjectId);
+
+            subject.Name = name;
+
+            if (file != null)
+            {
+                try
+                {
+                    var path = _env.WebRootPath + "\\Upload\\";
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    var filePath = Path.Combine(path, fileName);
+
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    await Save(file, filePath);
+                    
+                    var documentId = _documentRepository.Create(new Document
+                    {
+                        OriginalName = file.FileName,
+                        FileName = fileName,
+                        Path = path
+                    }).Id;
+
+                    _documentRepository.SaveChanges();
+                    subject.DocumentId = documentId;
+                    _baseRepository.SaveChanges();
+
+                    return Ok();
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+            else
+                _baseRepository.SaveChanges();
+
+            return Ok();
         }
 
         private async Task Save(IFormFile fileToSave, string folder)
