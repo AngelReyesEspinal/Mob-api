@@ -14,8 +14,9 @@ namespace BL.Mappings
         public MobProfile()
         {
             CreateMap<Subject, SubjectDto>();
-        }
 
-        
+            CreateMap<Evaluation, EvaluationDto>()
+                .ForMember(x => x.QuestionQuantity, opt => opt.MapFrom(x => x.Questions.Count));
+        }
     }
 }

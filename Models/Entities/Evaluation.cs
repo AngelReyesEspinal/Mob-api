@@ -6,6 +6,7 @@ namespace Models.Entities
 {
     public class Evaluation : Base.Base
     {
+        public bool ShowGifs { get; set; }
         public string Name { get; set; }
         public int SubjectId { get; set; }
         public virtual Subject Subject { get; set; }
