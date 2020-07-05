@@ -49,6 +49,24 @@ namespace Api.Controllers
             return Ok(dto);
         }
 
+        [HttpGet("GetBySecretKey/{key}")]
+        public async Task<IActionResult> GetBySecretKey(string key)
+        {
+            var subject = await _baseRepository.GetContext()
+                                               .Subject.Include(x => x.Document)
+                                               .FirstOrDefaultAsync(x => x.SecretKey == key);
+            var dto = new SubjectDto
+            {
+                Id = subject.Id,
+                UserId = subject.UserId,
+                Name = subject.Name,
+                FileName = subject.Document.OriginalName,
+                Logo = await ConvertToBase64(subject.Document.Path + subject.Document.FileName),
+                SecretKey = subject.SecretKey
+            };
+            return Ok(dto);
+        }
+
         [HttpGet("userId/{id}")]
         public async Task<IActionResult> GetByUserId(int id)
         {
@@ -73,7 +91,7 @@ namespace Api.Controllers
         }
 
         [HttpPost("subject")]
-        public async Task<IActionResult> Upload([FromForm] string name, IFormFile file)
+        public async Task<IActionResult> Upload([FromForm] string name, [FromForm] string userId, IFormFile file)
         {
             if (file == null)
                 return UnprocessableEntity();
@@ -103,7 +121,7 @@ namespace Api.Controllers
                     Name = name,
                     SecretKey = Guid.NewGuid().ToString(),
                     DocumentId = documentId,
-                    UserId = 1
+                    UserId = Convert.ToInt32(userId)
                 });
 
                 _baseRepository.SaveChanges();

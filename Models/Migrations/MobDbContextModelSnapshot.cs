@@ -77,8 +77,6 @@ namespace Models.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("Order");
-
                     b.Property<int>("UserId");
 
                     b.Property<string>("Wildcard");

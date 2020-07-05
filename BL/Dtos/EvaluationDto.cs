@@ -9,5 +9,6 @@ namespace BL.Dtos
         public string Name { get; set; }
         public bool ShowGifs { get; set; }
         public int QuestionQuantity { get; set; }
+        public List<QuestionDto> QuestionsFrontEnd { get; set; }
     }
 }

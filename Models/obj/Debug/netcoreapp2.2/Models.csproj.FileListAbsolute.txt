@@ -9,4 +9,3 @@ D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.csproj.CoreCompile
 D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.dll
 D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.pdb
 D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.genruntimeconfig.cache
-D:\Source\Repos\Mob\Api\Models\obj\Debug\netcoreapp2.2\Models.csprojAssemblyReference.cache

@@ -17,6 +17,8 @@ namespace BL.Mappings
 
             CreateMap<Evaluation, EvaluationDto>()
                 .ForMember(x => x.QuestionQuantity, opt => opt.MapFrom(x => x.Questions.Count));
+
+            CreateMap<QuestionAnswerOption, QuestionAnswerOptionDto>();
         }
     }
 }

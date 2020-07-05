@@ -7,7 +7,6 @@ namespace Models.Entities
     public class Question : Base.Base
     {
         public string Name { get; set; }
-        public int Order { get; set; }
         public string Wildcard { get; set; }
         public int EvaluationId { get; set; }
         public int UserId { get; set; }
