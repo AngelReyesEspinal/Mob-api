@@ -55,6 +55,9 @@ namespace Api.Controllers
             var subject = await _baseRepository.GetContext()
                                                .Subject.Include(x => x.Document)
                                                .FirstOrDefaultAsync(x => x.SecretKey == key);
+            if (subject == null) 
+                return UnprocessableEntity();
+
             var dto = new SubjectDto
             {
                 Id = subject.Id,
