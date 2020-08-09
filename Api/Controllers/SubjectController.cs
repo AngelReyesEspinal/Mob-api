@@ -16,7 +16,6 @@ using Models.Entities;
 
 namespace Api.Controllers
 {
-    // todo: refactorizar
     public class SubjectController : BaseController<Subject>
     {
         private IHostingEnvironment _env;
@@ -78,7 +77,7 @@ namespace Api.Controllers
                                                .Subject.Include(x => x.Document)
                                                .Where(x => x.UserId == id)
                                                .ToListAsync();
-            foreach (var subject in subjects) // hay que buscarle la vuelta con el mapper idk
+            foreach (var subject in subjects) 
             {
                 var dto = new SubjectDto
                 {

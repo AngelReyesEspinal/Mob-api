@@ -16,7 +16,6 @@ using Models.Entities;
 
 namespace Api.Controllers
 {
-    // todo: refactorizar
     public class QuestionController : BaseController<Question>
     {
         private IHostingEnvironment _env;
